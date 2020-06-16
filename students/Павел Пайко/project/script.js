@@ -14,3 +14,15 @@ const renderGoodsList = (list=goods) => {
 }
 
 renderGoodsList(goods);
+<<<<<<< HEAD
+=======
+
+// Альтернативный вариант, еще короче
+// Array.prototype.render = function(){
+//     const goodsList = this.map( listItem  => `<div class="goods-item"><h2>${listItem.title}</h2><p>${listItem.price}</p></div>`);
+//     const newGoodsList = goodsList.join("");
+//     document.querySelector('.goods-list').innerHTML = newGoodsList;
+// }
+
+// goods.render()
+>>>>>>> HW-1
