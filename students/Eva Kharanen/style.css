@@ -1,0 +1,94 @@
+
+.head{
+    width: 100vw;
+    height: 150px;
+    background-image: url(img/apple.jpeg);
+    background-size: contain;
+    background-color: rgba(211, 211, 211, 0.51);
+    background-repeat: no-repeat;
+    margin: 0 0 50px 0;
+    padding: 0;
+    color: #828187;
+    font-size: 34px;
+    display: flex;
+    justify-content: center;
+}
+.cart-button {
+    float: right;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 24px;
+    color: #828187;
+    border: none;
+    border-radius: 10px;
+    align-items: center;
+}
+.cart-button:hover{
+    background-color: #343a40;
+    color: white;
+}
+.cart-button:focus{
+    outline: none;
+}
+.cart-button:active{
+    color: #828187;
+}
+.goods-list {
+    display: flex;
+    width: 85%;
+    justify-content: space-around;
+}
+
+.goods-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: calc(100% / 5);
+    min-height: 300px;
+}
+.goods-item:hover{
+    box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.title {
+    display: flex;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 70px;
+    background-color: darkgrey;
+    text-align: center;
+    color: white;
+    margin: 0;
+}
+
+.price {
+    display: flex;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 70px;
+    background-color: darkgrey;
+    text-align: center;
+    color: white;
+    margin: 0;
+    font-size: 34px;
+}
+
+.img {
+    width: 100%;
+    height: auto;
+}
+
+.basket {
+    width: 30px;
+    height: auto;
+}
