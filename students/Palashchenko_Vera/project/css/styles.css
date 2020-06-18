@@ -14,6 +14,9 @@ button:hover {
   background: #00a383;
   color: white;
 }
+a {
+  text-decoration: none;
+}
 header {
   background: #2e16b1;
   height: 100px;
@@ -49,6 +52,14 @@ header h1 {
 }
 .cart-button:hover {
   border: 2px dashed #fff;
+}
+.total-price {
+  width: 100%;
+  height: 40px;
+  background: #9f9ac0;
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
 }
 main {
   width: 100%;
@@ -92,4 +103,17 @@ main {
 .goods-item__price button {
   width: 100px;
   height: 40px;
+}
+.burger-menu {
+  width: 100%;
+  height: 500px;
+  background: #fff;
+}
+.burger-menu__header {
+  font-size: 40px;
+  text-align: center;
+  background: #ffa100;
+}
+.burger-menu__header p {
+  padding: 20px 0;
 }
