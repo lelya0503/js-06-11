@@ -1,15 +1,19 @@
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+
+function sendRequest(url, callback) {
+    const xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+            callback(xhr.responseText);
+        }
+    }
+    xhr.open('GET', `${API}${url}`, true)
+    xhr.send()
+}
 class List {
     constructor() {
         this.goods = [];
-        this.cssClass = '';
-    }
-    render() {
-        let goodsLayout = '';
-        this.goods.forEach(({ title, price }) => {
-            const item = new GoodsItem(title, price);
-            goodsLayout += item.render();
-        });
-        document.querySelector(this.cssClass).innerHTML = goodsLayout;
     }
 }
 class Item {
@@ -23,22 +27,27 @@ class Item {
 class GoodsList extends List {
     constructor() {
         super()
-        this.cssClass = '.goods-list';
     }
-    fetchGoods() {
-        this.goods = [
-            { title: 'Компьютер', price: 10000 },
-            { title: 'Мышь', price: 500 },
-            { title: 'Клавиатура', price: 1000 },
-            { title: 'Монитор', price: 7000 }
-        ];
+    fetchGoods(callback) {
+        sendRequest('/catalogData.json', (result) => {
+            this.goods = JSON.parse(result);
+            callback();
+        });
     }
+    render() {
+        console.log("render");
+        let goodsLayout = '';
+        this.goods.forEach(({ title, price }) => {
+            const item = new GoodsItem(title, price);
+            goodsLayout += item.render();
+        });
+        document.querySelector('.goods-list').innerHTML = goodsLayout;
 
+    }
 }
 class BasketList extends List {
     constructor() {
         super();
-        this.cssClass = '.basket-list';
     }
     render() {
         let goodsLayout = '';
@@ -48,7 +57,7 @@ class BasketList extends List {
             goodsLayout += item.render(title, price);
             count++;
         });
-        document.querySelector(this.cssClass).innerHTML = goodsLayout;
+        document.querySelector(".basket-list").innerHTML = goodsLayout;
     }
     fetch(title, price) {
         const itemToBasket = new BasketItem(title, price);
@@ -90,8 +99,6 @@ class BasketItem extends Item {
 }
 
 const list = new GoodsList;
-
-list.fetchGoods();
-list.render();
-
 const basket = new BasketList;
+
+list.fetchGoods(() => list.render());
