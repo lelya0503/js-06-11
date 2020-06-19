@@ -1,0 +1,31 @@
+header {
+    height: 50px;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.cart-button {
+    width: 100px;
+    height: 30px;
+    margin-right: 30px;
+    border-radius: 10px;
+}
+
+main {
+    border: 1px solid #333;
+}
+
+.goods-list {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.goods-item {
+    width: 20%;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
