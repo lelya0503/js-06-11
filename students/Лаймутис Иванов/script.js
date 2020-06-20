@@ -1,104 +1,163 @@
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+
+function sendRequest(url) {
+
+    return new Promise((resolve, reject) => {
+
+        const xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                resolve(xhr.responseText);
+            }
+        };
+
+        xhr.open('GET', `${API}${url}`, true);
+        xhr.send();
+    })
+
+}
+
 class GoodsItem {
-  constructor(title, price) {
-    this.title = title;
-    this.price = price;
-  }
-  render() {
-    return `<div class="goods-item"><h3>${this.title}</h3><p>${this.price}</p></div>`;
-  }
+    constructor(product_name, price) {
+        this.product_name = product_name;
+        this.price = price;
+    }
+
+    render() {
+        return `<div class="goods-item" data-title="${this.product_name}" data-price="${this.price}">
+            <h2>${this.product_name}</h2>
+            <p>${this.price}</p>
+            <button name="add-to-cart">Добавить в корзину</button>
+        </div>`;
+    }
 }
 
 class GoodsList {
-  constructor() {
-    this.goods = [];
-  }
-  fetchGoods() {
-    this.goods = [
-      { title: 'Arab shisha', price: 5000 },
-      { title: 'Modern shisha', price: 7500 },
-      { title: 'Classic shisha', price: 9000 },
-      { title: 'Sheikh shisha', price: 30000 },
-    ];
-  }
-    
-  
-    
-  render() {
-    let listHtml = '';
-    let sum = 0;
-    
-    this.goods.forEach(good => {
-      const goodItem = new GoodsItem(good.title, good.price);
-      listHtml += goodItem.render();
-        sum += good.price; // Подсчет суммы в цикле        
-    });      
-      console.log(sum); // Вывод суммы      
-    document.querySelector('.goods-list').innerHTML = listHtml;
-  }
-    
-// Функция суммы отдельно    
-    sumPrice() {
-          let sum1 = 0;
-        this.goods.forEach(good => {
-            sum1 += good.price;            
+    constructor() {
+        this.goods = [];
+        this.basketGoods = [];
+
+
+        document.querySelector(".goods-list").addEventListener("click", (event) => {
+
+            if (event.target.name === "add-to-cart") {
+                console.log(event.target.parentElement.dataset.title);
+                console.log(event.target.parentElement.dataset.price);
+                this.addToBasket(event.target.parentElement.dataset.title, event.target.parentElement.dataset.price);
+
+            }
         });
-        console.log(sum1);
-    } 
-    
+
+    }
+
+    // Метод добавления товаров в корзину
+    addToBasket(a, b) {
+
+        const basketObj = new GoodsItem(a, b);
+
+
+        this.basketGoods.push(basketObj);
+
+        console.log(this.basketGoods);
+
+    }
+
+
+    fetchGoods() {
+        
+        return new Promise((resolve, reject) => {
+        
+        sendRequest('/catalogData.json').then((result) => {
+            this.goods = JSON.parse(result);
+            resolve();
+         
+            
+        });
+        
+        });
+    }
+
+    render() {
+        let goodsLayout = '';
+        this.goods.forEach(({
+            product_name,
+            price
+        }) => {
+            const item = new GoodsItem(product_name, price);
+            goodsLayout += item.render();
+        });
+        document.querySelector('.goods-list').innerHTML = goodsLayout;
+    }
 }
-
-const list = new GoodsList();
-list.fetchGoods();
-list.render();
-list.sumPrice(); // Вызов отдельной функции суммы
-
 
 
 
 class backetItem {
-    constructor(title, price){
+    constructor(title, price) {
         this.title = title;
         this.price = price;
-        this.quantity =1;        
+        this.quantity = 1;
     }
-    
+
 }
 
 class basket {
-  constructor() {
-      this.basketgoods = [];      
-  }
-    
-    checkGoodsInBasket() {} // Проверяет наличие товара в корзине
-    
-    renderSum() {} // Пересчитывает сумму
-    
-    renderTable() {} // Перерисовывает таблицу и вставляет в html
-    
-    addGoodToBasket (){
-        // Если товар присутсвует увеличиваем колличесво в таблице на 1
-        // После каждого вызова функции пересчитываем сумму и отрисовываем таблицу
-        
-/*        
-     if checkGoodsInBasket() return true {
-         quantity +=1;
-         renderSum();
-         renderTable();
-     }
-        // Если нет, то выводим новую строку в таблицу с колличеством 1 и добавляем элемент в массив basketgoods
-        // После каждого вызова функции пересчитываем сумму и отрисовываем таблицу
-         else {             
-             this.basketgoods.push(backetItem);
-             let 
-             renderSum();
-             renderTable();
-      }  
-      */
-    }    
-  
-  
-    removeFromBasket() {} // удаляет элемент из корзины и вызыввает внутри метод перерисовки таблицы и пересчета суммы.
+    constructor() {
+
+        this.elInBacket = [];
+
+    }
+
+    fetchGoodsInBasket(callback) {
+        sendRequest('/getBasket.json').then((result) => {
+            this.elInBacket = JSON.parse(result);
+
+            callback();
+
+        });
+    }
+
+
+    renderBacket() {
+
+    }
+
+
+    delFromBacket() {
+
+        document.querySelector(".del-list").addEventListener("click", (event) => {
+
+            if (event.target.name === "del-from-cart") {
+                console.log(event.target.parentElement.dataset.title);
+                 
+                const titleEl = event.target.parentElement.dataset.title;
+
+                // Не уверен, что сработает сравнение titleEl, если не так посоветуйте, пожалуйста
+                
+                const index = this.elInBacket.findIndex((element) => {
+                    return element.title === titleEl;
+                });
+                if (index !== -1) {
+                    this.elInBacket.splice(index, 1);
+                    console.log(this.elInBacket);
+                }
+
+
+            }
+        });
+
+
+    }
 }
 
 
 
+const list = new GoodsList;
+list.fetchGoods().then(() => list.render());
+
+
+
+const elBacket = new basket;
+elBacket.fetchGoodsInBasket(() => elBacket.renderBacket());
+console.log(elBacket);
