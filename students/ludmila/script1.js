@@ -54,7 +54,7 @@ class GoodsList { // список товаров для каталога
 
 .then(() => {
 	
-	render();
+	this.render();
          console.log('processResult promise resolve'));
      })
      .catch((error) => {
