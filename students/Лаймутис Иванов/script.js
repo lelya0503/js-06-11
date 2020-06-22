@@ -106,16 +106,30 @@ class basket {
     constructor() {
 
         this.elInBacket = [];
+        
+        
+        // В комментариях, так как пока нет рендера корзины и класса del-list
+        
+        /*
+         document.querySelector(".del-list").addEventListener("click", (event) => {
 
+            if (event.target.name === "del-from-cart") {
+                delFromBacket();
+              }
+        });    
+*/
     }
 
-    fetchGoodsInBasket(callback) {
+    fetchGoodsInBasket() {
+        
+        return new Promise((resolve, reject) => {
         sendRequest('/getBasket.json').then((result) => {
             this.elInBacket = JSON.parse(result);
 
-            callback();
+           resolve();
 
         });
+                           });
     }
 
 
@@ -126,9 +140,7 @@ class basket {
 
     delFromBacket() {
 
-        document.querySelector(".del-list").addEventListener("click", (event) => {
-
-            if (event.target.name === "del-from-cart") {
+        
                 console.log(event.target.parentElement.dataset.title);
                  
                 const titleEl = event.target.parentElement.dataset.title;
@@ -144,8 +156,7 @@ class basket {
                 }
 
 
-            }
-        });
+           
 
 
     }
@@ -159,5 +170,5 @@ list.fetchGoods().then(() => list.render());
 
 
 const elBacket = new basket;
-elBacket.fetchGoodsInBasket(() => elBacket.renderBacket());
+elBacket.fetchGoodsInBasket().then(() => elBacket.renderBacket());
 console.log(elBacket);
