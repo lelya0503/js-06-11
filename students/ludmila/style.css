@@ -1,0 +1,13 @@
+.goods-list{
+	overflow: hidden;
+	width: 100%;
+	background-color: #CCFF66;
+}
+.goods-item{
+	float: left;
+    background-color:#CC99FF;
+	width: 25%;
+	text-align: center;
+    border-radius:10px;
+	margin:2%;
+}
