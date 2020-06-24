@@ -72,7 +72,6 @@ class Basket {
         let idx = arr.indexOf(elem);
         this.item.splice(idx, 1);
         document.querySelector('.basket-list').removeChild(elem);
-        console.log(this._product)
         return this._product
 
     }
@@ -108,13 +107,4 @@ goodBtns.forEach((btn, index) => {
 let cartBtn = document.querySelector('.cart-button')
 cartBtn.addEventListener('click', (e) => {
     basket.render()
-})
-
-let basketBtns = document.querySelectorAll('.basket__button');
-let basketItem = document.querySelectorAll('.basket-item');
-
-basketBtns.forEach((btn, index) => {
-    console.log(btn)
-
-    btn.addEventListener('click', function(e) {})
 })
