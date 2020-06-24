@@ -1,76 +1,70 @@
-const goods = [
-    {title: 'Компьютер', price: 3500, img: 'img/mac.jpeg'},
-    {title: 'Мышь', price: 99, img: 'img/mouse.jpeg'},
-    {title: 'Клавиатура', price: 110, img: 'img/keyboard.jpeg'},
-    {title: 'Монитор', price: 400, img: 'img/monitor.jpeg'},
-];
-
-
-const getGoodsItem = (title, price, img) => {
-    return `<div class="goods-item">
-                <h2 class="title">${title}</h2>
-                <img class="img" src=${img} alt=${title} />
-                <p class="price">${price} euro</p>
-            </div>`;
-};
-const renderGoodsList = (list) => {
-    const goodsList = list.map(listItem => getGoodsItem(listItem.title, listItem.price, listItem.img));
-    document.querySelector('.goods-list').innerHTML = goodsList.join(' ');
-}
-
+// корзина
 class Basket {
-    basketItems = [];
-
-    addToTheBasket(product, amount) {
-        this.basketItems.push(new BasketItem(product, amount))
-    };
-    removeFromTheBasket(removedBasketItem) {
-        let removedIndex = this.basketItems.findIndex(basketItem => removedBasketItem === basketItem);
-        this.basketItems.splice(removedIndex, 1);
-    };
-
-    getBasketItems(){
-        return this.basketItems;
+    constructor() {
+        this.basketItems = [];
+        this.getBasketItems();
     }
 
-    getTotalPrice(){
+    getBasketItems() {
+        new Promise((resolve, reject) => {
+            sendGETRequest(`${API_URL}/getBasket.json`)
+                .then((result) => {
+                    this.basketItems = JSON.parse(result);
+                    this.render();
+                    resolve();
+                });
+        })
+    }
+
+    addToTheBasket(product, amount) {
+        sendGETRequest(`${API_URL}/addToBasket.json`, 'post', { product, amount })
+            .then((res) => {
+                const {result} = JSON.parse(res);
+                if (result === 1) {
+                    this.basketItems.push(new BasketItem(product, amount))
+                } else {
+                    console.log('error push')
+                }
+            })
+    };
+
+    removeFromTheBasket(removedBasketItem) {
+        sendGETRequest(`${API_URL}/deleteFromBasket.json`, 'DELETE', { removedBasketItem })
+            .then((res) => {
+                const {result} = JSON.parse(res);
+                if (result === 1) {
+                    let removedIndex = this.basketItems.findIndex(basketItem => removedBasketItem === basketItem);
+                    if (removedIndex !== -1) {
+                        this.basketItems.splice(removedIndex, 1);
+                    }
+                } else {
+                    console.log('error delete')
+                }
+                this.render()
+            })
+    };
+
+    getTotalPrice() {
         let totalBasketSum = 0;
         this.basketItems.forEach(basketItem => totalBasketSum += basketItem.getTotalPrice())
         return totalBasketSum;
     }
+
     clearBasket() {
         this.basketItems = [];
     }
 
+    render() {
+        return `<h2 class="title">${this.product_name}</h2>
+                <p class="price">${this.price} euro</p>`;
+    }
 }
 
-class Produckt {
-    productId;
-    productName;
-    productPrice;
+const basketList = new Basket;
 
-    constructor(id, name, price) {
-        this.productId = id;
-        this.productName = name;
-        this.productPrice = price;
-    }
-
-    getProductPrice(){
-        return this.productPrice
-    }
-    getProductName(){
-        return this.productName
-    }
-    getProductId(){
-        return this.productId
-    }
-
-}
+//товар, который лежит в корзине
 
 class BasketItem {
-    product;
-    amount;
-
     constructor(product, amount) {
         this.product = product;
         this.amount = amount;
@@ -81,37 +75,79 @@ class BasketItem {
     }
 }
 
+// ответ с сервера, запрошенный товар, его отображение на странице
+
+class Produckt {
+    constructor(product_name, price) {
+        this.product_name = product_name;
+        this.price = price;
+    }
+
+    getProductPrice() {
+        return this.price
+    }
+
+    getProductName() {
+        return this.product_name
+    }
+
+    render() {
+        return `<div class="goods-item" data-title="${this.product_name}" data-price="${this.price}">
+                <h2 class="title">${this.product_name}</h2>     
+                <p class="price">${this.price} euro</p>
+                </div>`;
+    }
+}
+
+// запрос на сервер
+
+let sendGETRequest = (url, method = 'GET', payload = {}) => {
+    return new Promise((resolve) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = () => {
+            resolve(JSON.parse(xhr.responseText))
+        }
+
+        xhr.open('GET', url, true);
+        xhr.send(payload);
+    })
+}
+
+const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+
 class GoodsList {
     constructor() {
         this.goods = [];
     }
+
     fetchGoods() {
-        this.goods = [
-            { title: 'Shirt', price: 150 },
-            { title: 'Socks', price: 50 },
-            { title: 'Jacket', price: 350 },
-            { title: 'Shoes', price: 250 },
-        ];
+        sendGETRequest(`${API_URL}/catalogData.json`).then(goods => {
+            this.goods = goods;
+            this.render();
+        })
     }
 
-
-    getTotalGoodsPrice(){
+    getTotalGoodsPrice() {
         let totalGoodsPrice = 0;
-        this.goods.forEach( good => totalGoodsPrice += good.price)
+        this.goods.forEach(good => totalGoodsPrice += good.price)
         return totalGoodsPrice;
     }
 
     render() {
         let listHtml = '';
-        this.goods.forEach(good => {
-            const goodItem = new GoodsItem(good.title, good.price);
-            listHtml += goodItem.render();
-        });
+        this.goods.forEach(({product_name, price}) => {
+                const item = new Produckt(product_name, price)
+                listHtml += item.render()
+            }
+        )
         document.querySelector('.goods-list').innerHTML = listHtml;
     }
 }
 
+const list = new GoodsList;
+list.fetchGoods(() => list.render())
 
+// гамбургер
 
 class Hamburger {
     type; // object like: {name: 'Большой', price: 100, ccal: 40}
@@ -123,28 +159,28 @@ class Hamburger {
         this.content = content;
     }
 
-    addTopping(topping){
+    addTopping(topping) {
         this.toppings.push(topping)
     }
 
-    removeTopping(removedTopping){
+    removeTopping(removedTopping) {
         let index = this.toppings.findIndex(topping => topping === removedTopping)
         this.toppings.splice(index, 1)
     }
 
-    getToppings(topping){
+    getToppings(topping) {
         return this.toppings;
     }
 
-    getSize(){
+    getSize() {
         return this.type;
     }
 
-    getStuffing(){
+    getStuffing() {
         return this.content;
     }
 
-    calculatePrice(){
+    calculatePrice() {
         let contentPrice = 0;
         let toppingPrice = 0;
         this.content.forEach(contentItem => contentPrice += contentItem.price)
@@ -152,7 +188,7 @@ class Hamburger {
         return this.type.price + contentPrice + toppingPrice;
     }
 
-    calculateCalories(){
+    calculateCalories() {
         let contentCcal = 0;
         let toppingCcal = 0;
         this.content.forEach(contentItem => contentCcal += contentItem.calories)
