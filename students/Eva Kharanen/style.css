@@ -109,3 +109,12 @@
     width: 30px;
     height: auto;
 }
+.basket-block{
+    width: 200px;
+    min-height: 300px;
+    border-radius: 10px;
+    border: 1px solid springgreen;
+}
+main{
+    display: flex;
+}

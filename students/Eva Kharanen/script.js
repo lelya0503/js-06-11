@@ -1,3 +1,17 @@
+let sendGETRequest = (url, method = 'GET', payload = {}) => {
+    return new Promise((resolve) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = () => {
+            resolve(JSON.parse(xhr.responseText))
+        }
+
+        xhr.open('GET', url, true);
+        xhr.send(payload);
+    })
+}
+
+const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+
 // корзина
 class Basket {
     constructor() {
@@ -8,20 +22,22 @@ class Basket {
     getBasketItems() {
         new Promise((resolve, reject) => {
             sendGETRequest(`${API_URL}/getBasket.json`)
-                .then((result) => {
-                    this.basketItems = JSON.parse(result);
+                .then((res) => {
+                    this.basketItems = res;
                     this.render();
                     resolve();
                 });
         })
     }
 
-    addToTheBasket(product, amount) {
-        sendGETRequest(`${API_URL}/addToBasket.json`, 'post', { product, amount })
+    addToTheBasket(item) {
+        sendGETRequest(`${API_URL}/addToBasket.json`, 'GET', {item})
             .then((res) => {
-                const {result} = JSON.parse(res);
+                const {result} = res;
+                console.log(res)
                 if (result === 1) {
-                    this.basketItems.push(new BasketItem(product, amount))
+                    this.basketItems.push(item)
+                    console.log(this.basketItems)
                 } else {
                     console.log('error push')
                 }
@@ -29,7 +45,7 @@ class Basket {
     };
 
     removeFromTheBasket(removedBasketItem) {
-        sendGETRequest(`${API_URL}/deleteFromBasket.json`, 'DELETE', { removedBasketItem })
+        sendGETRequest(`${API_URL}/deleteFromBasket.json`, 'DELETE', {removedBasketItem})
             .then((res) => {
                 const {result} = JSON.parse(res);
                 if (result === 1) {
@@ -54,24 +70,30 @@ class Basket {
         this.basketItems = [];
     }
 
+
     render() {
-        return `<h2 class="title">${this.product_name}</h2>
-                <p class="price">${this.price} euro</p>`;
+        this.el = document.getElementsByClassName('basket-block')
+        this.el.innerHTML = this.template
+
+
     }
 }
+
+let btnBasket = document.getElementsByClassName('cart-button');
+btnBasket.addToTheBasket;
 
 const basketList = new Basket;
 
 //товар, который лежит в корзине
 
 class BasketItem {
-    constructor(product, amount) {
-        this.product = product;
-        this.amount = amount;
+    constructor(product, price) {
+        this.product = product_name;
+        this.price = price;
     }
-
-    getTotalPrice() {
-        let priceForProduct = this.product.getProductPrice() * this.amount
+    render() {
+        return `<h2 class="title">${this.product_name}</h2>
+                <p class="price">${this.price} euro</p>`;
     }
 }
 
@@ -101,20 +123,6 @@ class Produckt {
 }
 
 // запрос на сервер
-
-let sendGETRequest = (url, method = 'GET', payload = {}) => {
-    return new Promise((resolve) => {
-        const xhr = new XMLHttpRequest();
-        xhr.onload = () => {
-            resolve(JSON.parse(xhr.responseText))
-        }
-
-        xhr.open('GET', url, true);
-        xhr.send(payload);
-    })
-}
-
-const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
 class GoodsList {
     constructor() {
