@@ -95,6 +95,7 @@ class Produckt {
         return `<div class="goods-item" data-title="${this.product_name}" data-price="${this.price}">
                 <h2 class="title">${this.product_name}</h2>     
                 <p class="price">${this.price} euro</p>
+                <button class="btn">добавить в корзину</button>
                 </div>`;
     }
 }

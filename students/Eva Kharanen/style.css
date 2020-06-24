@@ -76,11 +76,28 @@
     align-items: center;
     width: 100%;
     min-height: 70px;
-    background-color: darkgrey;
     text-align: center;
-    color: white;
+    color: green;
     margin: 0;
     font-size: 34px;
+}
+.btn{
+    width: 80%;
+    height: 50px;
+    background-color: #FF7236;
+    margin: 0 auto 20px auto;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+}
+.btn:hover{
+    background-color: #ffa100;
+}
+.btn:active{
+    background-color: #FF7236;
+}
+.btn:focus{
+    outline: none;
 }
 
 .img {
