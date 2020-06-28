@@ -1,0 +1,13 @@
+.text{
+    color: #121313;
+    width: 400px;
+    height: auto;
+    border: 1px solid greenyellow;
+    border-radius: 10px;
+}
+.valid {
+    border-color: #36cc36;
+}
+.invalid {
+    border-color:red;
+}
