@@ -5,7 +5,6 @@
 
 body {
 	font-family: Arial;
-
 }
 header {
 	width: 100%;
@@ -38,11 +37,14 @@ h2 {
 	font-size: 20px;
 	margin-bottom: 30px;
 	text-align: center;
+}
+
+h3 {
 	color: black;
+	margin-bottom: 15px;
 }
 
 p {
-	margin-bottom: 20px;
 	color: black;
 }
 
@@ -58,7 +60,6 @@ p {
 }
 
 .basket h3 {
-
 	font-size: 16px;
 	margin-bottom: 30px;
 	text-align: center;
@@ -94,14 +95,14 @@ p {
 	padding: 0 60px 60px 60px;
 	justify-content: space-between;
 }
-main .goods-list {
+.main {
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0 auto;
 	justify-content: space-between;
 	}
 
-.goods-item {
+.item-box {
 	width: 300px;
 	background-color: white;
 	text-align: center;
@@ -109,7 +110,8 @@ main .goods-list {
 	padding: 30px;
 	margin-bottom: 60px;
 }
-.goods-item img{
+
+.item-box img{
 	width:300px;
 	height: 200px;
 	margin: 0 auto;
@@ -117,7 +119,11 @@ main .goods-list {
 	background-color: #c4c4c4;
 }
 
-.goods-item button {
+.item-box p {
+	margin-bottom: 20px;
+}
+
+.item-box button {
 	width: 120px;
 	height: 25px;
 	border: 1px solid black;
@@ -128,7 +134,7 @@ main .goods-list {
 
 }
 
-.goods-item button:hover {
+.item-box button:hover {
 	border: none;
 	background-color: #81d8d0;
 	color: white;
