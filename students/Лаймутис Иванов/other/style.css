@@ -1,0 +1,76 @@
+.mainBody {
+    width: 85%;
+    margin: auto;
+}
+
+
+.mainHeader {
+    height: 100px;
+    background-color: #343a40;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.cart-button {
+    margin-right: 20px;
+}
+
+.goods-list {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.goods-item {
+    margin-top: 20px;
+    text-align: center;
+   height: 150px;
+    width: 150px;
+   border: 1px solid black; 
+}
+
+.form {
+    display: flex;
+   flex-direction: column;
+    width: 20%;    
+}
+
+.name {
+    margin-top: 30px;
+}
+
+.telNumber {
+    margin-top: 30px;    
+}
+
+.email {
+    margin-top: 30px;
+}
+
+.text {
+    margin-top: 30px;
+}
+
+.send {
+    margin-top: 30px;
+}
+
+/*
+input:valid {
+    border-color: green;
+    color: green;
+    box-shadow: none;
+}
+
+
+
+input:invalid {
+  box-shadow: 0 0 5px 1px red;
+}
+
+input:focus:invalid {
+  outline: none;
+}
+
+*/
