@@ -18,6 +18,7 @@ header {
     background: #fff;
     padding: 20px;
     box-shadow: 0 3px 6px rgba(0,0,0,.2);
+    position: relative;
 }
 
 .cart-button {
@@ -41,6 +42,19 @@ header {
     background: #3b7eb9;
 }
 
+.cart {
+    position: absolute;
+    width: 300px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.2);
+    background: #fff;
+    padding: 10px 15px;
+    top: 100px;
+}
+
+.cart-item {
+    margin-bottom: 10px;
+}
+
 .goods-list {
     width: 70%;
     margin: 0 auto;
@@ -57,3 +71,4 @@ header {
     border-radius: 5px;
     padding: 10px;
 }
+
