@@ -8,7 +8,7 @@ function makeGETRequest(url, arr = []) {
             xhr = new ActiveXObject("Microsoft.XMLHTTP");
         }
 
-        xhr.onreadystatechange = function () {
+        xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 resolve(xhr.responseText);
             }
@@ -131,7 +131,7 @@ class BasketList {
         let basketItem = document.querySelectorAll('.basket-item');
         let basketBtns = document.querySelectorAll('.basket-btn');
         basketBtns.forEach((btn, index) => {
-            btn.addEventListener('click', function (e) {
+            btn.addEventListener('click', function(e) {
                 basket.removeItem(basketItem[index])
             })
         })
