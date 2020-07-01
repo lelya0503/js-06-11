@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>eShop</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
     <script src="script.js" defer></script>
-</head>
-<body class="mainBody">
-    <header class="mainHeader">
-        <button type="button" class="cart-button">Корзина</button>
-    </header>
-    <main>
-        <div class="goods-list"></div>
-    </main>
+    <link rel="stylesheet" href="style.css" /> </head>
+
+<body>
+    <div id="app">
+        <header>
+            <input type="text" class="goods-search" v-model="searchLine"/>            
+            <button type="button" class="search-button" v-on:click="filterGoods(searchLine)">Искать</button>
+            <button type="button" class="cart-button" v-on:click="isVisibleCart=!isVisibleCart">Корзина</button>
+            </header>
+            <div class="cart" v-show="isVisibleCart">
+                <div v-for="item in cartGoods">
+                    <h3>{{ item.product_name }} {{ item.price }}</h3>
+                <!--    <p>{{ item.price }}</p> -->
+                 </div>   
+            </div>
+        
+        <main>
+            <div class="goods-list">
+                <div v-for="item in filteredGoods" class="goods-item">
+                    <h2>{{ item.product_name }}</h2>
+                    <p>{{ item.price }}</p>
+                    <template v-if="item.price != 0">
+                    <button @click="() => addToCart(item)" name="add-to-cart">Добавить в корзину </button>
+                    </template>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
+
 </html>
