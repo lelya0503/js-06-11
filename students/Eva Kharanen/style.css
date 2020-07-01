@@ -19,7 +19,7 @@
     height: 50px;
     display: flex;
     justify-content: space-around;
-    font-size: 24px;
+    font-size: 18px;
     color: #828187;
     border: none;
     border-radius: 10px;
@@ -48,7 +48,7 @@
     border: 1px solid grey;
     border-radius: 10px;
     width: calc(100% / 5);
-    min-height: 300px;
+    height: 300px;
 }
 .goods-item:hover{
     box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
@@ -76,11 +76,28 @@
     align-items: center;
     width: 100%;
     min-height: 70px;
-    background-color: darkgrey;
     text-align: center;
-    color: white;
+    color: green;
     margin: 0;
     font-size: 34px;
+}
+.btn{
+    width: 80%;
+    height: 50px;
+    background-color: #FF7236;
+    margin: 0 auto 20px auto;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+}
+.btn:hover{
+    background-color: #ffa100;
+}
+.btn:active{
+    background-color: #FF7236;
+}
+.btn:focus{
+    outline: none;
 }
 
 .img {
@@ -91,4 +108,26 @@
 .basket {
     width: 30px;
     height: auto;
+}
+.basket-block{
+    width: 200px;
+    min-height: 20px;
+    border-radius: 10px;
+    border: 1px solid springgreen;
+}
+main{
+    display: flex;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.basket-item-name{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+}
+.btn-delete{
+    height: 20px;
 }

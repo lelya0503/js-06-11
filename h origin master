@@ -1,0 +1,617 @@
+[33mcommit 1549e1f5260668c1f8a8819869baaba83201fe92[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Julia Silaeva <silaichic@mail.ru>
+Date:   Thu Jun 25 10:29:34 2020 +0300
+
+    add files lesson3
+
+[33mcommit db922956ffd746e6fbc24ed309112d4bf2e494c6[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: a0e66b0 196365e
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Tue Jun 23 20:50:46 2020 +0300
+
+    Merge pull request #29 from DenisDenisov-effemigog/master
+    
+    Третье ДЗ
+
+[33mcommit a0e66b0296758df8f0451f13d04132cc30c37239[m
+Merge: 5b298ff f99f296
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Mon Jun 22 15:37:23 2020 +0300
+
+    Merge pull request #25 from Roganovs96/master
+    
+    Вроде сделал все задания
+
+[33mcommit f99f29684b8a96c6cbbc0c94951e38977f0d7613[m
+Author: Roganovs96 <60143961+Roganovs96@users.noreply.github.com>
+Date:   Mon Jun 22 14:51:05 2020 +0300
+
+    Add files via upload
+
+[33mcommit 196365e3721549a7c57d029ba4a36cee5deb29a3[m
+Author: Denisov Denis <52452573+DenisDenisov-effemigog@users.noreply.github.com>
+Date:   Mon Jun 22 14:33:26 2020 +0300
+
+    Delete Red Faction.Armageddon.v 1.01 + 3 DLC.(Лаунчер).lnk
+
+[33mcommit a0dfc5f0d93db575c9c214239eb8d1337e1989e5[m
+Author: Denisov Denis <52452573+DenisDenisov-effemigog@users.noreply.github.com>
+Date:   Mon Jun 22 14:33:15 2020 +0300
+
+    Delete S.T.A.L.K.E.R. Dead Air (v0.98b).lnk
+
+[33mcommit 9b6177fb6f63f415fad61d32ccdbd5bda629ed32[m
+Author: Roganovs96 <60143961+Roganovs96@users.noreply.github.com>
+Date:   Mon Jun 22 13:45:59 2020 +0300
+
+    Delete style.css
+
+[33mcommit 60765db740a577650a93176e967865addce5a8d7[m
+Author: Roganovs96 <60143961+Roganovs96@users.noreply.github.com>
+Date:   Mon Jun 22 13:45:51 2020 +0300
+
+    Delete script.js
+
+[33mcommit 052bb9b19f0314ee42e46d4db95f19419553d877[m
+Author: Roganovs96 <60143961+Roganovs96@users.noreply.github.com>
+Date:   Mon Jun 22 13:45:42 2020 +0300
+
+    Delete index.html
+
+[33mcommit 2f15e62408a0b62e1a5a187dbbaae063921642e9[m
+Author: Roganovs96 <60143961+Roganovs96@users.noreply.github.com>
+Date:   Mon Jun 22 13:45:32 2020 +0300
+
+    Delete index.html
+
+[33mcommit b44b3f241273c0094b9bb6a4ee5ed22339a2552d[m
+Author: Roganovs96 <60143961+Roganovs96@users.noreply.github.com>
+Date:   Mon Jun 22 13:45:23 2020 +0300
+
+    Delete style.css
+
+[33mcommit ee695774544541d9509952441f3bed6d2e6b0f87[m
+Author: Roganovs96 <60143961+Roganovs96@users.noreply.github.com>
+Date:   Mon Jun 22 13:45:16 2020 +0300
+
+    Delete readme.txt
+
+[33mcommit b21f3071be2f4a5329078252fe3dec1aaac04a3a[m
+Author: Roganovs96 <60143961+Roganovs96@users.noreply.github.com>
+Date:   Mon Jun 22 13:44:50 2020 +0300
+
+    Delete script.js
+
+[33mcommit 7a3c9130e36bdaacaad593af15acfd434812e275[m
+Merge: 29337e9 5b298ff
+Author: Roganovs96 <60143961+Roganovs96@users.noreply.github.com>
+Date:   Mon Jun 22 13:10:56 2020 +0300
+
+    Merge pull request #1 from Ampa1R/master
+    
+    123
+
+[33mcommit 29337e97a0e895ab82599c2ab0c52fceaa4e2c04[m
+Author: Roganovs96 <60143961+Roganovs96@users.noreply.github.com>
+Date:   Mon Jun 22 13:08:21 2020 +0300
+
+    Add files via upload
+
+[33mcommit dc1a75af6c13e774d754214ecb61d59973126fba[m
+Author: Roganovs96 <60143961+Roganovs96@users.noreply.github.com>
+Date:   Mon Jun 22 13:06:18 2020 +0300
+
+    Add files via upload
+
+[33mcommit b4da18885e853db9182d1288b5d349a8592b3aec[m
+Author: Roganovs96 <60143961+Roganovs96@users.noreply.github.com>
+Date:   Mon Jun 22 13:01:02 2020 +0300
+
+    Add files via upload
+
+[33mcommit 5b298fff977e651014de25d4f8319b0560a111e0[m
+Merge: 02d3593 a5c1dd7
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Mon Jun 22 11:29:04 2020 +0300
+
+    Merge pull request #30 from Ponomaryov-Igor87/lesson-2
+    
+    lesson2
+
+[33mcommit 02d35931b4a3392b62ef116e8f2c63a26640f61b[m
+Merge: 8586830 2c330c6
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Mon Jun 22 11:23:52 2020 +0300
+
+    Merge pull request #38 from Eva2707/2LessonEva
+    
+    задание по 2 му уроку ООП
+
+[33mcommit 2c330c6facd289445a82bdae9bb0ca4d57c33aaa[m
+Author: EvaGB <evgenia.kharanen@gmail.com>
+Date:   Mon Jun 22 00:24:32 2020 +0200
+
+    задание по 2 му уроку ООП
+
+[33mcommit a5c1dd7a826ec72e1c23f8a5b386ef8bc08037f9[m
+Author: Ponomaryov-Igor87 <listat1987@gmail.com>
+Date:   Sat Jun 20 21:47:46 2020 +0600
+
+    lesson2
+
+[33mcommit 2e3ea7b4ba97dcb1fbb4bf14c81502eba9ca96ec[m
+Author: Effemigog <effemigog@yandex.ru>
+Date:   Sat Jun 20 17:05:52 2020 +0300
+
+    Третье ДЗ
+
+[33mcommit 85868303a2a7b01acb8f4645627cd7dbfc845bc7[m
+Author: Filipp Vasilev <fav@superdoc.ru>
+Date:   Fri Jun 19 11:37:18 2020 +0300
+
+    fix directory name
+
+[33mcommit 7e1ab0bce6d747e9aa9ad0f918ce9ffc1949a310[m
+Author: Filipp Vasilev <ampa1r.pl@gmail.com>
+Date:   Fri Jun 19 08:40:36 2020 +0300
+
+    lecture #3
+
+[33mcommit 0a32d91363959b2dc04b1e7271c39f0c6adba326[m
+Merge: 88658ab 0f18854
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Thu Jun 18 16:32:40 2020 +0300
+
+    Merge pull request #17 from Laimik/master
+    
+    Lesson2
+
+[33mcommit 0f18854a9036a03c14405831c6180a771e6d5ff7[m
+Author: Laimis <62464661+Laimik@users.noreply.github.com>
+Date:   Thu Jun 18 16:09:13 2020 +0300
+
+    Create script.js
+
+[33mcommit 920d788ce2a23d1c133899b03f99815ced0c3e71[m
+Author: Laimis <62464661+Laimik@users.noreply.github.com>
+Date:   Thu Jun 18 16:08:09 2020 +0300
+
+    Delete script.js
+
+[33mcommit 8fc11476d2955364fcee4251f1e57cf1209b5ed5[m
+Author: Roganovs96 <60143961+Roganovs96@users.noreply.github.com>
+Date:   Thu Jun 18 13:41:14 2020 +0300
+
+    Add files via upload
+
+[33mcommit 85de837a74a894df04d5718ca2818b28be94f5b0[m
+Author: Laimis <62464661+Laimik@users.noreply.github.com>
+Date:   Thu Jun 18 13:37:26 2020 +0300
+
+    Update script.js
+
+[33mcommit 57c362c480c046c47bcd4eb6c7e8c9d699fc8438[m
+Author: Laimis <62464661+Laimik@users.noreply.github.com>
+Date:   Thu Jun 18 13:34:50 2020 +0300
+
+    Update script.js
+
+[33mcommit 22bd7ae8db6e8e12a7562cfd4a3417f9626b8bc6[m
+Author: Laimis <62464661+Laimik@users.noreply.github.com>
+Date:   Thu Jun 18 12:41:45 2020 +0300
+
+    Delete script.js
+
+[33mcommit 76b7290079ddcdc0c7c8e0935971e19d6dcafb2e[m
+Author: Laimis <62464661+Laimik@users.noreply.github.com>
+Date:   Thu Jun 18 12:41:09 2020 +0300
+
+    Delete index.html
+
+[33mcommit 4387dd3fc4be845261469cf5c6531e5189a6a4d5[m
+Author: Laimis <62464661+Laimik@users.noreply.github.com>
+Date:   Thu Jun 18 12:37:33 2020 +0300
+
+    Add files via upload
+
+[33mcommit 88658ab13eafc8f704f63abb4af8f68eac841a5d[m
+Merge: c709c36 8669463
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Thu Jun 18 11:25:32 2020 +0300
+
+    Merge pull request #22 from Evaru/master
+    
+    lesson 2
+
+[33mcommit c709c36efce53859484f799dcb9bfa15c9c83771[m
+Merge: 505e2cf da0802d
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Thu Jun 18 10:56:57 2020 +0300
+
+    Merge pull request #20 from PavelPayko/HW2
+    
+    Hw2
+
+[33mcommit 505e2cf3b222cc6afd3bd9ecf04a981e0d8f44eb[m
+Merge: 3b772fa ab9eec5
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Thu Jun 18 10:32:59 2020 +0300
+
+    Merge pull request #19 from arsenkovae/master
+    
+    Lesson 1 home work
+
+[33mcommit 3b772fa2cde0ea8dc0f8ddc09fc0f5843efc4496[m
+Merge: c848ba5 d9b4e6b
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Thu Jun 18 10:30:35 2020 +0300
+
+    Merge pull request #16 from DenisDenisov-effemigog/master
+    
+    Второе ДЗ
+
+[33mcommit c848ba57c7550cc09a5a0f59589e075340e410c6[m
+Merge: b5c3447 18d398f
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Thu Jun 18 09:23:57 2020 +0300
+
+    Merge pull request #2 from ludmila-v-727/master
+    
+    JS-11-06-20
+
+[33mcommit b5c3447a6afc74ef57983724e6b4bfab0065a325[m
+Merge: 4cf9bd3 eebfab3
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Thu Jun 18 09:22:41 2020 +0300
+
+    Merge pull request #18 from kolyabazlov/master
+    
+    lesson 2
+
+[33mcommit 4cf9bd3626e3a6a9da89a4628c0afda10be5ec6e[m
+Author: Filipp Vasilev <ampa1r.pl@gmail.com>
+Date:   Thu Jun 18 09:12:45 2020 +0300
+
+    lecture # 2
+
+[33mcommit 8669463efb0f4779bbe4b669229fefe47e308e62[m
+Author: Evaru <lady_vera@list.ru>
+Date:   Thu Jun 18 14:06:58 2020 +1000
+
+    lesson 2
+
+[33mcommit da0802dd8f795b5f020445146a0db1499e440708[m
+Author: PavelPayko <Pavel.payko@yandex.ru>
+Date:   Thu Jun 18 03:15:01 2020 +0300
+
+    Домашнее задание №2. 3 пункт в папке other
+
+[33mcommit ab9eec5617d179d4bd189d2856123ce85c57da06[m
+Author: arsenkovae <61830366+arsenkovae@users.noreply.github.com>
+Date:   Wed Jun 17 20:54:05 2020 +0300
+
+    Lesson 1 home work
+
+[33mcommit eebfab3c6861a6847b3687857ee0c6698bc0c226[m
+Author: Kolya <bazlovrabota@gmail.com>
+Date:   Wed Jun 17 17:36:12 2020 +0300
+
+    lesson 2
+
+[33mcommit 49350165db65cfc51ae9ab6c1cff3c331848a797[m
+Author: Laimis <62464661+Laimik@users.noreply.github.com>
+Date:   Wed Jun 17 14:56:24 2020 +0300
+
+    Add files via upload
+
+[33mcommit d399c464926f6e8ef2e86ebe7267388009ac82db[m
+Author: Laimis <62464661+Laimik@users.noreply.github.com>
+Date:   Wed Jun 17 14:55:49 2020 +0300
+
+    Add files via upload
+
+[33mcommit d9b4e6be51d9b345b0f3f97947e27460c379e1dd[m
+Author: Effemigog <effemigog@yandex.ru>
+Date:   Wed Jun 17 14:00:06 2020 +0300
+
+    Второе ДЗ
+
+[33mcommit dbfa4fb7b57862a77ad23148c9a0e51a0202db8e[m
+Author: Effemigog <effemigog@yandex.ru>
+Date:   Wed Jun 17 13:56:47 2020 +0300
+
+    Второе ДЗ
+
+[33mcommit 28b484b31f365eeebf34b5aa7700bdc53d3485c8[m
+Merge: 0430994 a141fde
+Author: PavelPayko <Pavel.payko@yandex.ru>
+Date:   Tue Jun 16 12:57:39 2020 +0300
+
+    альтернативный вариант
+
+[33mcommit 18d398fb046a071c2958df9f6392a68134b6939b[m
+Author: ludmila-v-727 <52469661+ludmila-v-727@users.noreply.github.com>
+Date:   Mon Jun 15 21:56:06 2020 +0300
+
+    Add files via upload
+
+[33mcommit 6a65802577d5e80a3c58c838f81ccc1fccbd2623[m
+Author: ludmila-v-727 <52469661+ludmila-v-727@users.noreply.github.com>
+Date:   Mon Jun 15 21:53:19 2020 +0300
+
+    Create readme.txt
+
+[33mcommit 916120997a01f7e5216ecee55a3acd7541296ab8[m
+Merge: 9c8b711 846eb57
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Mon Jun 15 19:55:17 2020 +0300
+
+    Merge pull request #12 from kolyabazlov/master
+    
+    коля базлов урок 1
+
+[33mcommit 846eb57a87391fab7d275abf5bc68a2f66fa9f36[m
+Author: Kolya <bazlovrabota@gmail.com>
+Date:   Mon Jun 15 19:54:10 2020 +0300
+
+    added /project files
+    
+    вам спасибо, по-тихоньку вникаю в гит...
+
+[33mcommit 33edebe4a2164620527acc3994254d83afb8b702[m
+Author: Kolya <bazlovrabota@gmail.com>
+Date:   Mon Jun 15 19:48:35 2020 +0300
+
+    changed directory
+    
+    changed directory to /students/Николай Базлов/
+
+[33mcommit 9c8b711e91f7e2ade9ba6d71f67e48dc558e16f5[m
+Merge: af09414 3d522f9
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Mon Jun 15 19:16:55 2020 +0300
+
+    Merge pull request #14 from annalitond/master
+    
+    Practice 1
+
+[33mcommit af0941447bc2de7993799cc41deb90e7f32103e7[m
+Merge: 838972e c40b45b
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Mon Jun 15 19:14:37 2020 +0300
+
+    Merge pull request #13 from Eva2707/eva
+    
+    была создана первая версия магазина
+
+[33mcommit 838972ecdf6e8a4448a7dc75a01344c8a6dfd98b[m
+Merge: 915259d bc7a7c5
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Mon Jun 15 19:11:34 2020 +0300
+
+    Merge pull request #15 from creapt/master
+    
+    Добавления папки
+
+[33mcommit bc7a7c53d536ffc534313898539f2a3380453ca8[m
+Author: creapt <60788213+creapt@users.noreply.github.com>
+Date:   Mon Jun 15 17:02:38 2020 +0400
+
+    Добавления папки
+    
+    выполнение ДЗ к 1уроку
+
+[33mcommit 3d522f98a64daa527fd3fcbf916f5231731ade1e[m
+Author: Annalitond <pU{9L6WQ1[)prqwA>
+Date:   Mon Jun 15 15:07:14 2020 +0300
+
+    v1.1
+
+[33mcommit c40b45b7b413a767f6ed6168c6d774026c8ac0cb[m
+Author: EvaGB <evgenia.kharanen@gmail.com>
+Date:   Mon Jun 15 13:57:27 2020 +0200
+
+    была создана первая версия магазина
+
+[33mcommit 4b4915f53a2990c61f1295091379c972a0bc8571[m
+Author: Kolya <bazlovrabota@gmail.com>
+Date:   Mon Jun 15 13:02:44 2020 +0300
+
+    my commit
+
+[33mcommit 915259d08752d615277fd10241f725f6d4d1c3a2[m
+Merge: 18ff347 40145cc
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Mon Jun 15 09:32:56 2020 +0300
+
+    Merge pull request #11 from Evaru/master
+    
+    add project (Palashchenko)
+
+[33mcommit 40145cc3460d8239a4f3decf9fe48be02152e838[m
+Author: Evaru <lady_vera@list.ru>
+Date:   Mon Jun 15 15:16:41 2020 +1000
+
+    add project (Palashchenko)
+
+[33mcommit 91b39b99b8a1acceb98b7246ac4b1efc6a498df2[m
+Author: Annalitond <pU{9L6WQ1[)prqwA>
+Date:   Mon Jun 15 06:03:26 2020 +0300
+
+    v1
+
+[33mcommit 18ff347f7d9971e0cf7bc9aa7364d56805af35cf[m
+Merge: 01b08d2 28db50a
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Sun Jun 14 23:37:28 2020 +0300
+
+    Merge pull request #10 from NkeirukaEze/master
+    
+    HW1
+
+[33mcommit 01b08d24ef944f0bd6d4c0bfacde3a09901b57fc[m
+Merge: c882424 6feb209
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Sun Jun 14 23:33:58 2020 +0300
+
+    Merge pull request #9 from surkatena/master
+    
+    hw_01
+
+[33mcommit 6feb209b84da2a325c41c55a40655a8794078926[m
+Author: Гисинова Екатерина <61207541+surkatena@users.noreply.github.com>
+Date:   Sun Jun 14 23:13:43 2020 +0300
+
+    hw_01
+    
+    Убрала запятые между карточками каталога.
+    Добавила значение по умолчанию для img ( будет картинка заглушка)
+    Не смогла сократить функцию.
+
+[33mcommit 28db50aea1b719a2cc06c6399fd5ba72eee60240[m
+Author: Nkeiruka  Ezekh <nkeiruka@mail.ru>
+Date:   Sun Jun 14 23:09:59 2020 +0300
+
+    HW1
+
+[33mcommit 322f1a9d154c7145ed03ebfe89652210acecd2db[m
+Merge: bb7dc71 c882424
+Author: Гисинова Екатерина <61207541+surkatena@users.noreply.github.com>
+Date:   Sun Jun 14 23:05:12 2020 +0300
+
+    Merge pull request #1 from Ampa1R/master
+    
+     hw-01
+
+[33mcommit c882424b3b2aa4908f98f3d1d259fc037978af6f[m
+Merge: 8bb0596 4c744dd
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Sun Jun 14 23:03:27 2020 +0300
+
+    Merge pull request #5 from Roganovs96/master
+    
+    Add files via upload
+
+[33mcommit 8bb0596275da45875a3c038c36aafc3df9822107[m
+Merge: 538bcfd 4cf6d5e
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Sun Jun 14 22:04:19 2020 +0300
+
+    Merge pull request #7 from Ponomaryov-Igor87/lesson_1
+    
+    Lesson 1
+
+[33mcommit 538bcfdb1f9c560b7fb780a8b4af6bac74575543[m
+Author: Filipp Vasilev <ampa1r.pl@gmail.com>
+Date:   Sun Jun 14 21:46:10 2020 +0300
+
+    fix project structure
+
+[33mcommit b463d188f7e3ad9314a35a1d1d6c317ee5000e62[m
+Merge: da55000 f77d915
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Sun Jun 14 21:25:12 2020 +0300
+
+    Merge pull request #3 from Laimik/master
+    
+    Add files via upload
+
+[33mcommit da55000a754b8a82245e68a6b3e06864833605c5[m
+Merge: 83d98eb a141fde
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Sun Jun 14 21:16:28 2020 +0300
+
+    Merge pull request #1 from PavelPayko/HW-1
+    
+    Hw 1
+
+[33mcommit 4cf6d5e8240b3141879ea77600a57b184acb5a06[m
+Author: Ponomaryov-Igor87 <listat1987@gmail.com>
+Date:   Sun Jun 14 22:22:14 2020 +0600
+
+    lesson1/1
+    
+    Что то пошло не по плану.
+
+[33mcommit 0673bcb9ce1be7937a335164b1e3fff2a167193a[m
+Author: Ponomaryov-Igor87 <listat1987@gmail.com>
+Date:   Sun Jun 14 22:00:39 2020 +0600
+
+    Сделал дз 1
+    
+    Сделал дз 1
+
+[33mcommit 4c744ddbb93a0980ddf9f87725c5159a3a45531c[m
+Author: Roganovs96 <60143961+Roganovs96@users.noreply.github.com>
+Date:   Sun Jun 14 18:06:19 2020 +0300
+
+    Add files via upload
+
+[33mcommit f77d915a7862d8f67c982e2d039fa6b1e339ffc2[m
+Author: Laimis <62464661+Laimik@users.noreply.github.com>
+Date:   Sun Jun 14 13:41:56 2020 +0300
+
+    Add files via upload
+
+[33mcommit 4490045f864e1878550dd37741cb7e8f5cc6670b[m
+Author: ludmila-v-727 <52469661+ludmila-v-727@users.noreply.github.com>
+Date:   Sat Jun 13 20:41:29 2020 +0300
+
+    Add files via upload
+
+[33mcommit 0c6cc1be2230f3579266f003d1e30fba71db86ec[m
+Author: ludmila-v-727 <52469661+ludmila-v-727@users.noreply.github.com>
+Date:   Sat Jun 13 17:36:12 2020 +0300
+
+    Create readme.txt
+
+[33mcommit 471210d2bd08784f3d9376b325256008a39c3902[m
+Author: Effemigog <effemigog@yandex.ru>
+Date:   Sat Jun 13 10:46:08 2020 +0300
+
+    Первое ДЗ
+
+[33mcommit a141fdea52939a96927bffcac744a00d570798bc[m
+Author: PavelPayko <62839301+PavelPayko@users.noreply.github.com>
+Date:   Sat Jun 13 01:18:27 2020 +0300
+
+    добавил альтенативное решение
+
+[33mcommit 66c04c1386fa79946684aad2f4819149bb529ab2[m
+Author: PavelPayko <62839301+PavelPayko@users.noreply.github.com>
+Date:   Fri Jun 12 18:34:13 2020 +0300
+
+    ДЗ №1
+
+[33mcommit 0430994deb1a3ea3380e618f18f0bf1ff2652db5[m
+Author: PavelPayko <62839301+PavelPayko@users.noreply.github.com>
+Date:   Fri Jun 12 18:15:31 2020 +0300
+
+    ДЗ №1
+
+[33mcommit c2704d55b041018b4a8f227cbda58e49a37ddf72[m
+Merge: bb7dc71 83d98eb
+Author: PavelPayko <62839301+PavelPayko@users.noreply.github.com>
+Date:   Fri Jun 12 14:58:32 2020 +0300
+
+    Merge pull request #1 from Ampa1R/master
+    
+    lecture #1
+
+[33mcommit 83d98eba934b5fdcd4cd4a3ac664af23895958a6[m
+Author: Filipp Vasilev <ampa1r.pl@gmail.com>
+Date:   Thu Jun 11 21:50:42 2020 +0300
+
+    lecture #1
+
+[33mcommit bb7dc71534311e5b3ca290c2611267ba4d6a1760[m
+Author: Filipp Vasilev <ampa1r.pl@gmail.com>
+Date:   Thu Jun 11 21:47:58 2020 +0300
+
+    lecture #1
+
+[33mcommit 7daf20be06aea1c9ae78bb370e0b57fbdc116402[m
+Author: Ampa1R <ampa1r.pl@gmail.com>
+Date:   Thu Jun 11 19:58:21 2020 +0300
+
+    Initial commit

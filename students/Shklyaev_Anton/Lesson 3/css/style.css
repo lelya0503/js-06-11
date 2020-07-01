@@ -1,0 +1,106 @@
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.padding-site {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 300px;
+    margin: 0 0 20px 0;
+}
+
+.header-menu {
+    display: flex;
+    margin: 25px 0 0 0;
+}
+
+.nav-menu {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 0 100px
+}
+
+.menu-link {
+    font-family: 'Fredoka One', cursive;
+    text-decoration: none;
+    margin: 0 0 0 100px;
+    font-size: 30px;
+    font-weight: 400;
+    color: rgb(110, 192, 151);
+}
+
+.menu-link:hover {
+    color: rgb(21, 97, 59)
+}
+
+.cart-btn {
+    font-family: 'Fredoka One', cursive;
+    height: 45px;
+    display: block;
+    border-radius: 4px;
+    border: none;
+    width: 200px;
+    transition: all 0.5s;
+    text-align: center;
+    cursor: pointer;
+    font-size: 24px;
+    margin: 30px 0 0 100px;
+}
+
+.cart-btn:hover {
+    background-color: rgb(182, 182, 182);
+    border: 1px solid black;
+}
+
+.goods-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.goods-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 270px;
+    background: #FFFFFF;
+    border: 1px solid #E1E1E1;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 25px rgba(208, 208, 208, 0.25);
+    border-radius: 6px;
+    margin: 30px 0;
+    padding: 0 0 10px;
+}
+
+h2 {
+    font-family: 'Fredoka One', cursive;
+    margin: 0 0 20px 0;
+}
+
+p {
+    margin: 0 0 20px 0;
+}
+
+.buy-btn {
+    height: 25px;
+    width: 100px;
+    display: block;
+    border-radius: 4px;
+    border: none;
+    transition: all 0.5s;
+    text-align: center;
+    cursor: pointer;
+}
+
+.buy-btn:hover {
+    background-color: rgb(181, 181, 182);
+    border: 1px solid black;
+}
