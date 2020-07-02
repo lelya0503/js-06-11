@@ -1,20 +1,11 @@
 <template>
   <div id="app">
-    <Header>
-      <h1 class="header-name">eShop</h1>
-      <div class="header-wrp">
-        <label for="search">
-          <input type="text" placeholder="searh here" v-model="searchValue" />
-          <button class="search-button" type="button" v-on:click="filterGoods">
-            <span class="icon-search">S</span>
-          </button>
-        </label>
-        <button type="button" class="cart-button" @click="isCartVisible=!isCartVisible">
-          <span class="icon-basket">C</span>
-          <div class="count" v-if="cartGoods.length>0">{{ cartGoods.length }}</div>
-        </button>
-      </div>
-    </Header>
+    <Header
+      :filterGoods="filterGoods"
+      :cartGoods="cartGoods"
+      @getSearchValue="getSearchValue"
+      @changeCartVisible="changeCartVisible"
+    />
     <main>
       <GoodsList :filteredGoods="filteredGoods" @addToCart="addToCart" />
       <CartList
@@ -51,6 +42,13 @@ export default {
     };
   },
   methods: {
+    changeCartVisible() {
+      this.isCartVisible = !this.isCartVisible;
+    },
+    getSearchValue(value) {
+      this.searchValue = value;
+      this.filterGoods();
+    },
     fetchGoods() {
       fetch(`${API}/catalogData.json`)
         .then(result => {
