@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="text">Далеко-далеко за словесными горами в стране гласных и согласных живут 'рыбные' тексты. Он
+        всемогущая
+        скатился пунктуация предупредила над, послушавшись свою до решила большого толку себя подпоясал речью свое, пояс
+        силуэт. Вершину образ своих вопрос даже строчка журчит прямо города пор языком. Страну великий ему коварных
+        своих, ты 'курсивных'? Запятых мир города свой алфавит страна языком, себя, вершину, ты повстречался
+        единственное
+        последний раз прямо. Вопроса, 'щеке' то! Ipsum путь правилами себя вопрос большого текст речью маленькая страна
+        парадигматическая. От всех, всеми 'речью' продолжил злых назад знаках необходимыми, она живет ipsum переписали
+        ему. Последний власти бросил единственное 'букв' страна? Путь семантика бросил собрал использовало грамматики?
+    </div>
+    <form style="display: flex; flex-direction: column; width: 250px;" id="form">
+        <input type="text" name="name" id="name" placeholder="only text" pattern="([A-Za-zА-Яа-я])+"
+            title="Используйте для ввода только буквы">
+        <input type="text" name="tel" id="tel" placeholder="+7(000)000-0000"
+            title="Введите данные в формате +7(000)000-0000" pattern="\+[0-9]{1}\([0-9]{3}\)[0-9]{3}-([0-9]){4}">
+        <input type="text" name="email" id="email" placeholder="mymail@mail.ru"
+            pattern="([A-Za-z0-9\.*\-*])+@{1}[a-z]+\.[a-z]+" title="Введите данные в формате mymail@mail.ru">
+        <textarea name="area" id="" cols="30" rows="10"></textarea>
+        <input type="submit" value="отправить" id="submit">
+
+    </form>
+    <script>
+        const str = document.querySelector('.text').innerHTML;
+        const regexp = /(')([а-я]+?)(')/g;
+        const toTest = str.match(regexp);
+        console.log(toTest);
+        const toReplace = str.replace(regexp, '"$2"');
+        console.log(toReplace);
+
+
+        // const nameTest = /[A-Za-zА-Яа-я]/g;
+        // const telTest = /\+([0-9])\(([0-9]{3})\)([0-9]{3})\-([0-9]{4})/g;
+        // const emailTest = /([a-z0-9]\.*\-*)+\@{1}([a-z])+\.([a-z])+/gi;
+    </script>
+</body>
+
+</html>
