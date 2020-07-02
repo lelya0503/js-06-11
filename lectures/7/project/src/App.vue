@@ -1,10 +1,7 @@
 <template>
   <div id="app">
     <Header>
-      <Search
-        :text="searchText"
-        @textChange="(value) => (searchText = value)"
-      />
+      <Search :text="searchText" @textChange="value => searchText = value" />
       <button
         type="button"
         class="cart-button"
@@ -31,7 +28,8 @@ import Search from "./components/Search.vue";
 import Cart from "./components/Cart.vue";
 import Error from "./components/Error.vue";
 
-const API = "http://localhost:3000";
+const API =
+  "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses";
 
 export default {
   name: "App",
@@ -53,11 +51,10 @@ export default {
   },
   mounted() {
     this.fetchGoods();
-    this.fetchCart();
   },
   methods: {
     fetchGoods() {
-      fetch(`${API}/catalog`)
+      fetch(`${API}/catalogData.json`)
         .then((result) => {
           return result.json();
         })
@@ -69,39 +66,8 @@ export default {
           console.error(err);
         });
     },
-    fetchCart() {
-      fetch(`${API}/cart`)
-        .then((result) => {
-          return result.json();
-        })
-        .then((data) => {
-          this.cartGoods = data;
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    },
     addToCart(item) {
-      fetch(`${API}/addToCart`, {
-        method: "POST",
-        body: JSON.stringify({ item }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((result) => {
-          return result.json();
-        })
-        .then((data) => {
-          if (data.result) {
-            this.cartGoods.push(item);
-          } else {
-            console.error("Cant add item to cart");
-          }
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+      this.cartGoods.push(item);
     },
     removeFromCart(id) {
       const index = this.cartGoods.find(({ id_product }) => id_product === id);
