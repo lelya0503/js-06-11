@@ -25,6 +25,11 @@ main {
 
 .basket-list {
     padding-top: 40px;
+    display: none;
+}
+
+.open {
+    display: flex;
 }
 
 .goods-item,
