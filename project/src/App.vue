@@ -3,19 +3,9 @@
     <Header>
       <input type="text" class="goods-search" v-model="searchText" />
       <button type="button" class="search-button">Искать</button>
-      <button
-        type="button"
-        class="cart-button"
-        v-on:click="isCartVisible = !isCartVisible"
-      >
-        Корзина
-      </button>
+      <button type="button" class="cart-button" v-on:click="isCartVisible = !isCartVisible">Корзина</button>
       <div class="cart" v-if="isCartVisible">
-        <div
-          class="cart-item"
-          v-for="item in cartGoods"
-          v-bind:key="item.id_product"
-        >
+        <div class="cart-item" v-for="item in cartGoods" v-bind:key="item.id_product">
           <h3>{{ item.product_name }}</h3>
           <p>{{ item.price }}</p>
         </div>
@@ -40,14 +30,14 @@ export default {
   name: "App",
   components: {
     GoodsList,
-    Header,
+    Header
   },
   data() {
     return {
       goods: [],
       cartGoods: [],
       searchText: "",
-      isCartVisible: false,
+      isCartVisible: false
     };
   },
   mounted() {
@@ -56,10 +46,10 @@ export default {
   methods: {
     fetchGoods() {
       fetch(`${API}/catalogData.json`)
-        .then((result) => {
+        .then(result => {
           return result.json();
         })
-        .then((data) => {
+        .then(data => {
           this.goods = data;
         });
     },
@@ -74,14 +64,14 @@ export default {
     },
     handleCartButtonClick() {
       this.isCartVisible = !this.isCartVisible;
-    },
+    }
   },
   computed: {
     filteredGoods() {
       const regexp = new RegExp(this.searchText, "i");
       return this.goods.filter(({ product_name }) => regexp.test(product_name));
-    },
-  },
+    }
+  }
 };
 </script>
 
