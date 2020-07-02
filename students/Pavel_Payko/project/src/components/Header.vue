@@ -46,5 +46,35 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+.icon-basket {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  text-align: center;
+  font-size: 2em;
+}
+.header {
+  background-color: rgba(0, 0, 0, 0.6);
+  min-height: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+.header-name {
+  color: whitesmoke;
+  margin: auto;
+  font-size: 3em;
+  font-family: monospace;
+}
+.header-logo {
+  color: whitesmoke;
+  margin: auto 50px;
+}
+.cart-button {
+  margin: 10px 50px;
+  width: 50px;
+  border-radius: 10px;
+  outline: none;
+}
 </style>

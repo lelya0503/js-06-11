@@ -14,6 +14,7 @@
         @removeFromCart="removeFromCart"
       />
     </main>
+    <Error v-if="fetchError" />
   </div>
 </template>
 
@@ -24,13 +25,15 @@ const API =
 import Header from "./components/Header.vue";
 import GoodsList from "./components/GoodsList.vue";
 import CartList from "./components/CartList";
+import Error from "./components/Error";
 
 export default {
   name: "App",
   components: {
     GoodsList,
     Header,
-    CartList
+    CartList,
+    Error
   },
   data() {
     return {
@@ -38,7 +41,8 @@ export default {
       cartGoods: [],
       filteredGoods: [],
       searchValue: "",
-      isCartVisible: false
+      isCartVisible: false,
+      fetchError: false
     };
   },
   methods: {
@@ -57,7 +61,8 @@ export default {
         .then(data => {
           this.goods = data;
           this.filteredGoods = data;
-        });
+        })
+        .catch(() => (this.fetchError = true));
     },
     addToCart(item) {
       this.cartGoods.push(item);
@@ -102,14 +107,6 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
-.icon-basket {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  text-decoration: inherit;
-  text-align: center;
-  font-size: 2em;
-}
 
 body {
   background: radial-gradient(
@@ -135,28 +132,7 @@ body {
   background-size: 100px 100px, 100px 100px, 50px 50px, 50px 50px;
   padding: 0 50px;
 }
-.header {
-  background-color: rgba(0, 0, 0, 0.6);
-  min-height: 50px;
-  display: flex;
-  justify-content: flex-end;
-}
-.header-name {
-  color: whitesmoke;
-  margin: auto;
-  font-size: 3em;
-  font-family: monospace;
-}
-.header-logo {
-  color: whitesmoke;
-  margin: auto 50px;
-}
-.cart-button {
-  margin: 10px 50px;
-  width: 50px;
-  border-radius: 10px;
-  outline: none;
-}
+
 main {
   background-color: rgba(255, 255, 255, 0.4);
   display: flex;
