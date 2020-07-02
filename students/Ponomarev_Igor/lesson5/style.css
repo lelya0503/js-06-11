@@ -40,6 +40,9 @@ header {
 .cart-button:hover {
     background: #3b7eb9;
 }
+.cart-button:active {
+    background: #1b5385;
+}
 
 .goods-list {
     width: 70%;

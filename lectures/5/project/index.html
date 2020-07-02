@@ -11,13 +11,20 @@
 <body>
     <div id="app">
         <header>
-            <input type="text" class="goods-search" />
+            <input type="text" class="goods-search" v-model="searchText" />
             <button type="button" class="search-button">Искать</button>
-            <button type="button" class="cart-button">Корзина</button>
+            <button type="button" class="cart-button" v-on:click="isCartVisible = !isCartVisible">Корзина</button>
+            <div class="cart" v-if="isCartVisible">
+                <div class="cart-item" v-for="item in cartGoods">
+                    <h3>{{ item.product_name }}</h3>
+                    <p>{{ item.price }}</p>
+                </div>
+            </div>
         </header>
         <main>
             <div class="goods-list">
-                <div v-for="item in goods" class="goods-item">
+                <div v-if="!filteredGoods.length">Нет ни одного товара</div>
+                <div v-for="item in filteredGoods" class="goods-item">
                     <h2>{{ item.product_name }}</h2>
                     <p>{{ item.price }}</p>
                     <button @click="() => addToCart(item)" name="add-to-cart">Добавить в корзину</button>

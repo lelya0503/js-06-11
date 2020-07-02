@@ -60,6 +60,8 @@ const app = new Vue({
     data: {
         goods: [],
         cartGoods: [],
+        searchText: '',
+        isCartVisible: false,
     },
     mounted() {
         this.fetchGoods();
@@ -75,7 +77,6 @@ const app = new Vue({
                 });
         },
         addToCart(item) {
-            console.log(item);
             this.cartGoods.push(item);
         },
         removeFromCart(id) {
@@ -83,6 +84,15 @@ const app = new Vue({
             if (index !== -1) {
                 this.cartGoods.splice(index, 1);
             }
+        },
+        handleCartButtonClick() {
+            this.isCartVisible = !this.isCartVisible;
+        }
+    },
+    computed: {
+        filteredGoods() {
+            const regexp = new RegExp(this.searchText, 'i');
+            return this.goods.filter(({ product_name }) => regexp.test(product_name));
         },
     }
 });

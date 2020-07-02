@@ -3,18 +3,36 @@
 <head>
 	<title>Пока пустой магазин</title>
     <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-    </header>
-    <main>
-        <div class="width_container">
-            <div class="product_container"></div>
-            <button id="bag_button" type="button" onclick={list.summary()}>Кликните сюда, чтобы узнать суммарную стоимость всех товаров</button>
-            <div id="bag_summ"></div>
-        </div>
-    </main>
+    <div id="app">
+        <header>
+            <input type="text" class="goods-search" v-model="searchLine"/>
+            <button class="search-button" type="button" @click="() => filterGoods()">Искать</button>
+            <button class="cart-button" type="button">Корзина</button>
+        </header>
+        <main>
+            <div class="width_container">
+                <!-- Проверка на есть ли товары -->
+                <div v-if="goods.length === 0">
+                    Нет данных о товарах
+                </div>
+                <div class="goods_container" v-else>
+                    <div class="goods_item" v-for="item in goods">
+                        <div class="goods_img"></div>
+                        <h3>{{ item.product_name }}</h3>
+                        <p>{{ item.price }}</p>
+                    </div>
+                </div>
+                <div class="cart_container" v-show="isVisibleCart">
+                    <h2 class="cart_title">Ваша корзина</h2>
+                    <div id="cart">Здесь появится то что ищется: {{blank}}</div>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
