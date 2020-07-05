@@ -191,13 +191,13 @@ export default {
   mounted() {
     this.fetchGoods();
     this.fetchCart();
-  },
-  computed: {
-    //     filterGoods() {
-    //         const regexp = new RegExp(this.searchValue, 'i');
-    //         return this.goods.filter(({ product_name }) => regexp.test(product_name))
-    //     }
   }
+  // computed: {
+  //     filterGoods() {
+  //         const regexp = new RegExp(this.searchValue, 'i');
+  //         return this.goods.filter(({ product_name }) => regexp.test(product_name))
+  //     }
+  // }
 };
 </script>
 
