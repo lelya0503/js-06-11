@@ -7,11 +7,13 @@
     background-color: rgba(211, 211, 211, 0.51);
     background-repeat: no-repeat;
     margin: 0 0 50px 0;
-    padding: 0;
+    padding: 20px;
+    box-sizing: border-box;
     color: #828187;
     font-size: 34px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 .cart-button {
     float: right;
@@ -19,7 +21,7 @@
     height: 50px;
     display: flex;
     justify-content: space-around;
-    font-size: 24px;
+    font-size: 18px;
     color: #828187;
     border: none;
     border-radius: 10px;
@@ -48,7 +50,7 @@
     border: 1px solid grey;
     border-radius: 10px;
     width: calc(100% / 5);
-    min-height: 300px;
+    height: 300px;
 }
 .goods-item:hover{
     box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
@@ -67,7 +69,14 @@
     color: white;
     margin: 0;
 }
-
+.search{
+    height: 30px;
+    box-sizing: border-box;
+}
+.search-button{
+    height: 30px;
+    box-sizing: border-box;
+}
 .price {
     display: flex;
     border-bottom-left-radius: 10px;
@@ -76,11 +85,28 @@
     align-items: center;
     width: 100%;
     min-height: 70px;
-    background-color: darkgrey;
     text-align: center;
-    color: white;
+    color: green;
     margin: 0;
     font-size: 34px;
+}
+.btn{
+    width: 80%;
+    height: 50px;
+    background-color: #FF7236;
+    margin: 0 auto 20px auto;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+}
+.btn:hover{
+    background-color: #ffa100;
+}
+.btn:active{
+    background-color: #FF7236;
+}
+.btn:focus{
+    outline: none;
 }
 
 .img {
@@ -91,4 +117,40 @@
 .basket {
     width: 30px;
     height: auto;
+}
+.basket-block{
+    width: 200px;
+    min-height: 20px;
+    border-radius: 10px;
+    border: 1px solid springgreen;
+}
+main{
+    display: flex;
+}
+.container{
+    display: flex;
+    width: 100%;
+}
+.basket-item-name{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+}
+.btn-delete{
+    height: 20px;
+}
+.basket-container{
+    display: flex;
+    flex-direction: column;
+}
+.empty{
+    background: #B0E0E6;
+    width: 200px;
+    height: 250px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 34px;
+    padding-top: 50px;
+    color: white;
 }
