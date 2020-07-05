@@ -5,6 +5,8 @@
       :key="item.id_product"
       :item="item"
       @removeFromCart="removeFromCart"
+      @amountInc="amountInc"
+      @amountDec="amountDec"
     />
   </div>
 </template>
@@ -34,6 +36,12 @@ export default {
   methods: {
     removeFromCart(item) {
       this.$emit("removeFromCart", item);
+    },
+    amountInc(item) {
+      this.$emit("amountInc", item);
+    },
+    amountDec(item) {
+      this.$emit("amountDec", item);
     }
   }
 };
@@ -41,4 +49,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.cart-list {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 25%;
+}
 </style>
