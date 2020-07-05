@@ -2,7 +2,7 @@
 <template>
   <div class="cart-item">
     <h2>{{ item.product_name }}</h2>
-    <p>{{ item.price }}</p>
+    <p>{{ item.price*item.amount }}</p>
     <button @click="$emit('amountDec', item)">-</button>
     <span>{{ item.amount }}</span>
     <button @click="$emit('amountInc', item)">+</button>

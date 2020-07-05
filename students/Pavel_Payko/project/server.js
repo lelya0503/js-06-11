@@ -80,7 +80,8 @@ app.post('/addToCart', (request, response) => {
             }
             response.json({ result: 1 })
         })
-    });
+    })
+    toStats(item, 'добавлен товар')
 })
 
 app.post('/amountInc', (request, response) => {
@@ -159,8 +160,30 @@ app.delete('/removeFromCart', (request, response) => {
             }
             response.json({ result: 1 })
         })
-    });
+    })
+    toStats(item, 'удален товар')
 })
+
+const toStats = function (item, msg) {
+    fs.readFile('./stats.json', 'utf-8', (err, data) => {
+        if (err) {
+            console.log(err)
+            response.status(500).json({ message: 'ошибка!' })
+            return
+        }
+        const toWrite = JSON.parse(data);
+        toWrite.push({
+            date: new Date().toLocaleString(),
+            message: msg,
+            title: item.product_name
+        })
+        fs.writeFile('./stats.json', JSON.stringify(toWrite), (err) => {
+            if (err) {
+                console.error(err)
+            }
+        })
+    })
+}
 
 app.listen(3000, () => {
     console.log('server is running at localhost:3000')
