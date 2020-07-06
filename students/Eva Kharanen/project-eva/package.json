@@ -2,13 +2,17 @@
   "name": "project-eva",
   "version": "0.1.0",
   "private": true,
+  "main": "server.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "node server/server.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
@@ -38,5 +42,8 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "author": "",
+  "license": "ISC"
 }

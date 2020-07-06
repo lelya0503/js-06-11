@@ -15,24 +15,25 @@
             </svg>
         </button>
         <div v-show="basketItems.length === 0"
-                class="empty">Корзина пустая</div>
+             class="empty">Корзина пустая
+        </div>
         <div class="goods-item-basket"
              v-for="good in basketItems" :key="good.id_product">
             <h3>{{ good.product_name }}</h3>
-            <p>{{ good.price }}</p>
-            <button class="btn" @click="(removeFromTheBasket(good.product_name))">Убрать из корзины</button>
+            <p>Цена:{{ good.price }}р, Кол-во:{{ good.amount }}</p>
+            <button class="btn" @click="(removeFromTheBasket(good.id_product))">Убрать из корзины</button>
         </div>
     </div>
 </template>
 <script>
-    const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+    const API_URL = 'http://localhost:3000';
 
     export default {
         name: 'Basket',
         props: {
             filteredGoods: Array,
             goods: Array,
-            basketItems: Array
+            basketItems: Array,
         },
 
         methods: {
@@ -46,19 +47,19 @@
                     xhr.send(payload);
                 })
             },
-            removeFromTheBasket(name) {
-                this.makeGETRequest(`${API_URL}/deleteFromBasket.json`, {name})
-                    .then((res) => {
-                        const {result} = res;
-                        if (result === 1) {
-                            let removedIndex = this.basketItems.findIndex(it => it && it.product_name === name);
-                            if (removedIndex !== -1) {
-                                this.basketItems.splice(removedIndex, 1);
-                            }
-                        } else {
-                            console.log('error delete')
-                        }
-                    })
+            getBasketItems(){
+                this.$emit('getBasketItems')
+            },
+            removeFromTheBasket(id) {
+                fetch(`${API_URL}/basket/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                })
+                .then(()=>{
+                    this.getBasketItems()
+                })
             },
             clearBasket() {
                 return this.basketItems = [];
@@ -96,6 +97,7 @@
         width: 30px;
         height: auto;
     }
+
     .basket-container {
         display: flex;
         flex-direction: column;
@@ -110,6 +112,7 @@
         font-size: 34px;
         color: white;
     }
+
     .cart-button {
         float: right;
         width: 200px;
@@ -135,7 +138,8 @@
     .cart-button:active {
         color: #828187;
     }
-    .goods-item-basket{
+
+    .goods-item-basket {
         border: 1px solid green;
         border-radius: 10px;
         min-width: 200px;

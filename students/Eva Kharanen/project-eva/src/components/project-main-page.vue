@@ -22,7 +22,7 @@
                              :key="good.id_product">
                             <h3 class="title">{{ good.product_name }}</h3>
                             <p class="price ">{{ good.price }}</p>
-                            <button class="btn" @click="() => addToTheBasket(good.product_name)">добавить в корзину
+                            <button class="btn" @click="() => addToTheBasket(good)">добавить в корзину
                             </button>
                         </div>
                     </pause>
@@ -30,7 +30,8 @@
                 </div>
                 <basket :basketItems="basketItems"
                         :filteredGoods="filteredGoods"
-                        :goods="goods">
+                        :goods="goods"
+                        @getBasketItems="getBasketItems">
                 </basket>
             </div>
         </main>
@@ -47,7 +48,8 @@
     //чтобы проверить задание со звезочкой slot раскоментируйте первый API_URL и закоментируйте второй
 
     // const API_URL = 'https://githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
-    const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+    // const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+    const API_URL = 'http://localhost:3000';
     export default {
         name: 'projectMainPage',
         components: {Basket, Search, Pause},
@@ -75,10 +77,36 @@
                     xhr.send(payload);
                 })
             },
+            getBasketItems() {
+                this.makeGETRequest(`${API_URL}/basket`).then(basketItems => {
+                    this.basketItems = basketItems;
+                })
+            },
 
-            addToTheBasket(name) {
-                const product = this.goods.find(it => it && it.product_name === name);
-                this.basketItems.push(product)
+            addToTheBasket(item) {
+                fetch(`${API_URL}/basket`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        item
+                    }),
+                    headers:{
+                        'Content-type': 'application/json',
+                    },
+                })
+                .then((result)=>{
+                    return result.json()
+                })
+                .then((data)=>{
+                  if (data.result){
+                      this.getBasketItems()
+                      // this.basketItems.push(item)
+                  }  else {
+                      console.error('cant be add to Basket')
+                  }
+                })
+                .catch((err)=>{
+                    console.log(err)
+                })
             },
 
             filterList(searchLine) {
@@ -88,9 +116,11 @@
             },
         },
         mounted() {
-            this.makeGETRequest(`${API_URL}/catalogData.json`, {}).then(goods => {
+            this.makeGETRequest(`${API_URL}/catalogData`, {}).then(goods => {
                 this.goods = goods;
                 this.filteredGoods = goods;
+                this.getBasketItems();
+
             });
         }
     }
@@ -128,6 +158,8 @@
         border: 1px solid grey;
         border-radius: 10px;
         height: 300px;
+        width: 200px;
+        margin-bottom: 10px;
     }
 
     .goods-item:hover {
