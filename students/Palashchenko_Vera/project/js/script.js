@@ -1,49 +1,94 @@
+const API =
+  'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+
+function sendRequest(url) {
+  return new Promise(function (resolve, reject) {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET', `${API}${url}`, true);
+
+    xhr.onload = function () {
+      if (this.status === 200) {
+        resolve(JSON.parse(this.response));
+      } else {
+        const error = new Error(this.statusText);
+        error.code = this.status;
+        reject(error);
+      }
+    };
+
+    xhr.onerror = function () {
+      reject(new Error('Network Error'));
+    };
+
+    xhr.send();
+  });
+}
+
 class GoodsItem {
-  constructor(title, price, img) {
-    this.title = title;
+  constructor(product_name, price, id_product) {
+    this.product_name = product_name;
     this.price = price;
-    this.img = img;
+    this.id = id_product;
   }
   render() {
-    return `<div class="goods-item">
-            <h2>${this.title}</h2>
-            <img src=${this.img} alt=${this.title} />
+    return `<div class="goods-item" data-title="${this.product_name}" 
+              data-price="${this.price}" data-id="${this.id}">
+            <h2>${this.product_name}</h2>
             <div class="goods-item__price">
               <p>${this.price} р.</p>
-              <button >Купить</button>
+              <button name='add-to-cart'>Купить</button>
             </div>
           </div>`;
   }
 }
 
+const cart = [];
+
 class GoodsList {
   constructor() {
     this.goods = [];
+    this.goodsItem = {};
   }
-  fetchGoods() {
-    this.goods = [
-      { title: 'Компьютер', price: 10000, img: 'img/comp.jpg' },
-      { title: 'Мышь', price: 500, img: 'img/mouse.jpg' },
-      { title: 'Клавиатура', price: 1000, img: 'img/2.jpg' },
-      { title: 'Монитор', price: 7000, img: 'img/monitor.jpg' },
-    ];
+  fetchGoods(render) {
+    sendRequest('/catalogData.json')
+      .then((response) => {
+        this.goods = response;
+        render();
+      })
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
   }
   getTotalPrice() {
     let goodsTotalPrice = 0;
     if (this.goods.length !== 0) {
-      this.goods.map(({ price }) => {
-        goodsTotalPrice += Number(price);
-      });
+      goodsTotalPrice = this.goods.reduce((prevValue, value) => {
+        return prevValue + value.price;
+      }, 0);
       document
         .querySelector('.total-price')
         .append(`Сумма всех наших товаров = ${goodsTotalPrice} р`);
     }
   }
+
+  addToCart() {
+    document.querySelector('.goods-list').addEventListener('click', (event) => {
+      const parent = event.target.parentElement.parentElement;
+      const product = {};
+      if (event.target.name === 'add-to-cart') {
+        product.id = parent.dataset.id;
+        product.name = parent.dataset.title;
+        product.price = parent.dataset.price;
+      }
+      if (Object.entries(product).length !== 0) cart.push(product);
+    });
+  }
+
   render() {
     let goodsLayout = '';
-
-    this.goods.forEach(({ title, price, img }) => {
-      const item = new GoodsItem(title, price, img);
+    this.goods.forEach(({ product_name, price, id_product }) => {
+      const item = new GoodsItem(product_name, price, id_product);
       goodsLayout += item.render();
     });
 
@@ -52,30 +97,65 @@ class GoodsList {
 }
 
 const list = new GoodsList();
-list.fetchGoods();
-list.getTotalPrice();
-list.render();
+list.fetchGoods(() => list.render());
+list.addToCart();
 
 class CartItem {
-  constructor(/*~ цена,название,количество,id */) {}
+  constructor(name, price, id) {
+    this.name = name;
+    this.price = price;
+    this.id = id;
+  }
+
   showProduct() {
     /* Просмотр продукта - 
     скорее всего переход на страницу по id продукта */
   }
   removeProduct() {
-    /* удаление продукта*/
+    document.querySelector('.cart').addEventListener('click', (event) => {
+      const removeTag = event.target.parentElement;
+      const removeId = event.target.parentElement.dataset.id;
+
+      const index = cart.findIndex((item) => item.id === removeId);
+      if (index !== -1) {
+        cart.splice(index, 1);
+        removeTag.remove();
+      }
+    });
   }
+
   countProduct() {
     /* изменение количества продукта */
   }
   render() {
-    /*вывод информации о товаре */
+    return `<div class="cart-item" data-title="${this.name}" data-price="${this.price}"
+            data-id="${this.id}" >
+            <p >${this.name}</p>
+            <span>${this.price} р</span>
+            <button class="remove-from-cart">Удалить</button>
+        </div>`;
   }
 }
+
+const cartItem = new CartItem();
+cartItem.removeProduct();
 
 class CartList {
   constructor() {
     this.items = [];
+  }
+  getProducts() {
+    document.querySelector('header').addEventListener('click', () => {
+      let cartList = [];
+
+      if (cart.length !== 0) {
+        cart.forEach(({ name, price, id }) => {
+          const item = new CartItem(name, price, id);
+          cartList += item.render();
+        });
+      }
+      document.querySelector('.cart').innerHTML = cartList;
+    });
   }
   getCartTotalPrice() {
     /*вывод общей стоимости, хотя ее можно записать при выводе товаров, 
@@ -87,100 +167,8 @@ class CartList {
   checkout() {
     /*оформление заказа */
   }
-  render() {
-    /*вывод товаров */
-  }
+  render() {}
 }
 
-// Начала делать класс для гамбургеров.
-// Столкнулась с проблемой вызова методов в самом классе.
-// Если я создаю экземпляр класса и оттуда вызываю метод, то он вызовется сразу,
-// а нужно при клике на тот же чекбокс(или другой тег). Искала информацию в инетренете,
-// но то, что находила - это вызов уже за пределом класса.
-// Не смогла понять как обойти этот момент.
-// Внизу моя попытка написать класс до тех пор, пока не споткнулась о вызов метода
-// Если есть возможность, расскажите о таком моменте, как обращаться к методам в самом класса
-
-class Hamburger {
-  constructor() {
-    this.burger = [];
-  }
-
-  fetchBurger() {
-    this.burger = [
-      { title: 'Большой', price: 100, calories: 40, category: 'size' },
-      { title: 'Маленький', price: 50, calories: 20, category: 'size' },
-      { title: 'С сыром', price: 10, calories: 20, category: 'composition' },
-      {
-        title: 'С салатом',
-        price: 20,
-        calories: 5,
-        category: 'composition',
-      },
-      {
-        title: 'С С картофелем',
-        price: 15,
-        calories: 10,
-        category: 'composition',
-      },
-      {
-        title: 'Приправа',
-        price: 15,
-        calories: 0,
-        category: 'condiment',
-      },
-      {
-        title: 'Майонез',
-        price: 20,
-        calories: 5,
-        category: 'condiment',
-      },
-    ];
-  }
-
-  changeSize(value) {
-    console.log(value);
-  }
-  chooseComposition() {}
-  chooseСondiment() {}
-  render() {
-    return `<div>
-        Ваш заказ:
-            <div>
-              <div>Выберите размер бургера:
-              ${this.burger
-                .filter(({ category }) => category === 'size')
-                .map((item) => {
-                  return `<div>
-                  <label>${item.title}</label>
-                  <input 
-                    type='checkbox' 
-                    onchange=${this.changeSize.bind(item)}/>
-                  </div>`;
-                })}
-              
-             </div>
-              <div>Выберите состав:
-              ${this.burger
-                .filter(({ category }) => category === 'composition')
-                .map(({ title }) => {
-                  return `<div>
-                  <label>${title}</label>
-                  <input type='checkbox' ></div>`;
-                })}</div>
-              <div>Выберите приправу по желанию:
-              ${this.burger
-                .filter(({ category }) => category === 'condiment')
-                .map(({ title }) => {
-                  return `<div>
-                  <label>${title}</label>
-                  <input type='checkbox' ></div>`;
-                })}</div>
-            </div>
-      </div>`;
-  }
-}
-const hamburger = new Hamburger();
-hamburger.changeSize;
-hamburger.fetchBurger();
-document.querySelector('.burger-menu__content').innerHTML = hamburger.render();
+const cartList = new CartList();
+cartList.getProducts();
