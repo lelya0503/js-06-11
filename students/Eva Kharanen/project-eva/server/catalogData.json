@@ -1,0 +1,14 @@
+[
+  {"id_product": 123, "product_name": "Мышка", "price": "1201" },
+  {"id_product": 124, "product_name": "Компьютер", "price": "1202" },
+  {"id_product": 125, "product_name": "Монитор", "price": "1203" },
+  {"id_product": 126, "product_name": "Чашка", "price": "1204" },
+  {"id_product": 127, "product_name": "Камера", "price": "1205" },
+  {"id_product": 153, "product_name": "Коврик", "price": "1206" },
+  {"id_product": 1423, "product_name": "Клавиатура", "price": "1207" },
+  {"id_product": 1236, "product_name": "Планшет", "price": "1208" },
+  {"id_product": 1213, "product_name": "Чехол", "price": "1209" },
+  {"id_product": 1239, "product_name": "Сумка", "price": "1210" },
+  {"id_product": 13, "product_name": "Колонка", "price": "111" },
+  {"id_product": 139, "product_name": "Системный блок", "price": "1212" }
+]
