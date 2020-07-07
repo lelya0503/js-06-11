@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eShop</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <input type="text" class="goods-search" />
+            <button type="button" class="search-button" @click="() => filterGoods()">Искать</button>
+            <button type="button" class="cart-button">Корзина</button>
+            <div class="searchproduct" v-show="isVisibleCart">
+                <div v-for="id">{{searchproduct}}</div>
+            </div>
+        </header>
+        <main>
+            <div class="goods-list">
+                <div v-for="item in filteredGoods" class="goods-item">
+                    <h2>{{ item.product_name }}</h2>
+                    <p>{{ item.price }}</p>
+                    <button class="cart-button" @click="() => addToCart(item)" name="add-to-cart">В корзину</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
