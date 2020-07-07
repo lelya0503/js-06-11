@@ -12,6 +12,8 @@
         :isCartVisible="isCartVisible"
         :cartGoods="cartGoods"
         @removeFromCart="removeFromCart"
+        @amountInc="amountInc"
+        @amountDec="amountDec"
       />
     </main>
     <Error v-if="fetchError" />
@@ -19,8 +21,7 @@
 </template>
 
 <script>
-const API =
-  "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses";
+const API = "http://localhost:3000";
 
 import Header from "./components/Header.vue";
 import GoodsList from "./components/GoodsList.vue";
@@ -54,7 +55,7 @@ export default {
       this.filterGoods();
     },
     fetchGoods() {
-      fetch(`${API}/catalogData.json`)
+      fetch(`${API}/catalog`)
         .then(result => {
           return result.json();
         })
@@ -64,15 +65,86 @@ export default {
         })
         .catch(() => (this.fetchError = true));
     },
+    fetchCart() {
+      fetch(`${API}/cart`)
+        .then(result => {
+          return result.json();
+        })
+        .then(data => {
+          this.cartGoods = data;
+        })
+        .catch(err => console.error(err));
+    },
     addToCart(item) {
-      this.cartGoods.push(item);
+      fetch(`${API}/addToCart`, {
+        method: "POST",
+        body: JSON.stringify({ item }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(result => {
+          return result.json();
+        })
+        .then(data => {
+          console.log("data result", data.result);
+          console.log("data item", item);
+          if (data.result) {
+            const check = this.amountCheck(item);
+            console.log(check);
+            if (check) {
+              let i = this.cartGoods.findIndex(pos => {
+                return item.id === pos.id;
+              });
+              if (i != -1) {
+                const toSplice = this.cartGoods[i];
+                toSplice.amount++;
+                console.log(i);
+                this.cartGoods.splice(i, 1, toSplice);
+              }
+            } else if (!check) {
+              this.cartGoods.push(item);
+              this.cartGoods[this.cartGoods.length - 1].amount = 1;
+            } else {
+              alert("Something wrong");
+            }
+          }
+        })
+        .catch(err => console.error(err));
+    },
+    amountCheck(item) {
+      let toCheck = this.cartGoods.findIndex(pos => {
+        return item.id === pos.id;
+      });
+      if (toCheck != -1) {
+        return true;
+      } else {
+        return false;
+      }
     },
     removeFromCart(item) {
-      let toRemove = this.cartGoods.findIndex(pos => {
-        return item.product_name === pos.product_name;
-      });
-      if (toRemove != -1) console.log(toRemove);
-      this.cartGoods.splice(toRemove, 1);
+      fetch(`${API}/removeFromCart`, {
+        method: "DELETE",
+        body: JSON.stringify({ item }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(result => {
+          return result.json();
+        })
+        .then(data => {
+          if (data.result) {
+            let toRemove = this.cartGoods.findIndex(pos => {
+              return item.product_name === pos.product_name;
+            });
+            if (toRemove != -1) {
+              console.log(toRemove);
+              this.cartGoods.splice(toRemove, 1);
+            }
+          }
+        })
+        .catch(err => console.error(err));
     },
     filterGoods() {
       console.log("filter");
@@ -80,10 +152,45 @@ export default {
       this.filteredGoods = this.goods.filter(item =>
         regexp.test(item.product_name)
       );
+    },
+    amountInc(item) {
+      fetch(`${API}/amountInc`, {
+        method: "POST",
+        body: JSON.stringify({ item }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(result => {
+          return result.json();
+        })
+        .then(data => {
+          if (data.result) {
+            item.amount++;
+          }
+        });
+    },
+    amountDec(item) {
+      fetch(`${API}/amountDec`, {
+        method: "POST",
+        body: JSON.stringify({ item }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(result => {
+          return result.json();
+        })
+        .then(data => {
+          if (data.result) {
+            item.amount--;
+          }
+        });
     }
   },
   mounted() {
     this.fetchGoods();
+    this.fetchCart();
   }
   // computed: {
   //     filterGoods() {
@@ -136,36 +243,5 @@ body {
 main {
   background-color: rgba(255, 255, 255, 0.4);
   display: flex;
-}
-.goods-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-rows: min-content;
-  width: 75%;
-}
-.basket-list {
-  width: 25%;
-}
-.goods-item,
-.basket-item {
-  margin: 10px;
-  background-color: lightgray;
-  border: 4px solid darkgray;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.goods-item p,
-h2,
-button {
-  margin: 5px 0;
-}
-
-.basket-item p,
-h2,
-button {
-  margin: 5px 0;
 }
 </style>
