@@ -7,6 +7,8 @@
     >
       <h3>{{ item.product_name }}</h3>
       <p>{{ item.price }}</p>
+      <p>Количество: {{ item.quantity }}</p>
+      <button @click="$emit('removeFromCart', item.id_product)">Удалить</button>
     </div>
   </div>
 </template>

@@ -12,7 +12,11 @@
       >
         Корзина
       </button>
-      <Cart v-if="isCartVisible" :cartGoods="cartGoods" />
+      <Cart
+        v-if="isCartVisible"
+        :cartGoods="cartGoods"
+        @removeFromCart="removeFromCart"
+      />
     </Header>
     <Error v-if="isError" />
     <GoodsList
@@ -94,7 +98,12 @@ export default {
         })
         .then((data) => {
           if (data.result) {
-            this.cartGoods.push(item);
+            const cartItem = this.cartGoods.find(({ id_product }) => id_product === item.id_product);
+            if (cartItem !== undefined) {
+                cartItem.quantity += 1;
+            } else {
+                this.cartGoods.push({ ...item, quantity: 1 });
+            }
           } else {
             console.error("Cant add item to cart");
           }
@@ -104,10 +113,31 @@ export default {
         });
     },
     removeFromCart(id) {
-      const index = this.cartGoods.find(({ id_product }) => id_product === id);
-      if (index !== -1) {
-        this.cartGoods.splice(index, 1);
-      }
+      fetch(`${API}/removeFromCart`, {
+        method: "DELETE",
+        body: JSON.stringify({ id }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((result) => {
+          return result.json();
+        })
+        .then((data) => {
+          if (data.result) {
+            const index = this.cartGoods.findIndex(
+              ({ id_product }) => id_product === id
+            );
+            if (index !== -1) {
+              this.cartGoods.splice(index, 1);
+            }
+          } else {
+            console.error("Cant remove item from cart");
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     },
     handleCartButtonClick() {
       this.isCartVisible = !this.isCartVisible;
