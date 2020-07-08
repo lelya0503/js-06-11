@@ -14,6 +14,7 @@
         color: #0b5bb8;
         display: flex;
         width: 80%;
+        flex-wrap: wrap;
         justify-content: space-around;
     }
 </style>
