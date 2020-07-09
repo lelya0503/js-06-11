@@ -74,6 +74,7 @@ const app = new Vue({
     mounted() {
         this.makeGETRequest(`${API_URL}/catalogData.json`, {}).then(goods => {
             this.goods = goods;
+            console.log(this.goods)
             this.filteredGoods = goods;
         });
     }
